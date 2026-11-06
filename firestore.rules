@@ -1,0 +1,48 @@
+rules_version = '2';
+
+// Oila Daraxti — Firestore xavfsizlik qoidalari
+//   trees/{treeId}                — faqat a'zolar o'qiy/yoza oladi
+//   trees/{treeId}/persons/{id}   — faqat shu daraxt a'zolari
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isMember(treeId) {
+      return signedIn() &&
+        request.auth.uid in get(/databases/$(database)/documents/trees/$(treeId)).data.members;
+    }
+
+    match /trees/{treeId} {
+      allow read: if signedIn() && request.auth.uid in resource.data.members;
+
+      allow create: if signedIn()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.members == [request.auth.uid]
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0;
+
+      allow update: if signedIn()
+        && request.resource.data.ownerId == resource.data.ownerId
+        && (
+          // Egasi hamma narsani o'zgartira oladi
+          request.auth.uid == resource.data.ownerId
+          // A'zolar nom/izohni o'zgartira oladi, lekin a'zolar ro'yxatini emas
+          || (request.auth.uid in resource.data.members
+              && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['members']))
+          // Kod orqali o'zini qo'shish yoki o'zini chiqarish
+          || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['members'])
+              && (request.resource.data.members == resource.data.members.concat([request.auth.uid])
+                  || request.resource.data.members == resource.data.members.removeAll([request.auth.uid])))
+        );
+
+      allow delete: if signedIn() && request.auth.uid == resource.data.ownerId;
+
+      match /persons/{personId} {
+        allow read, write: if isMember(treeId);
+      }
+    }
+  }
+}

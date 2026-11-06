@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "312534782745",
+    "project_id": "boookappdemo",
+    "storage_bucket": "boookappdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312534782745:android:fe0cb7d7728de5087f6b88",
+        "android_client_info": {
+          "package_name": "com.example.learnfirestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh-xhPLRlOpQW98MPE4mrbT8Yp58MW48Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312534782745:android:35596ec6aa8f35017f6b88",
+        "android_client_info": {
+          "package_name": "uz.gita.bookappdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh-xhPLRlOpQW98MPE4mrbT8Yp58MW48Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312534782745:android:c25b7f3344d667927f6b88",
+        "android_client_info": {
+          "package_name": "uz.gita.mybookapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh-xhPLRlOpQW98MPE4mrbT8Yp58MW48Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312534782745:android:46887da15d1068177f6b88",
+        "android_client_info": {
+          "package_name": "uz.oiladaraxti.family_tree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh-xhPLRlOpQW98MPE4mrbT8Yp58MW48Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
