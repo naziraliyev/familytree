@@ -19,6 +19,7 @@ class Person {
     this.birthDate,
     this.deathDate,
     this.birthPlace,
+    this.occupation,
     this.bio,
     this.fatherId,
     this.motherId,
@@ -32,6 +33,7 @@ class Person {
   final DateTime? birthDate;
   final DateTime? deathDate;
   final String? birthPlace;
+  final String? occupation;
   final String? bio;
   final String? fatherId;
   final String? motherId;
@@ -75,6 +77,7 @@ class Person {
       birthDate: (d['birthDate'] as Timestamp?)?.toDate(),
       deathDate: (d['deathDate'] as Timestamp?)?.toDate(),
       birthPlace: d['birthPlace'] as String?,
+      occupation: d['occupation'] as String?,
       bio: d['bio'] as String?,
       fatherId: d['fatherId'] as String?,
       motherId: d['motherId'] as String?,
@@ -89,6 +92,7 @@ class Person {
         'birthDate': birthDate == null ? null : Timestamp.fromDate(birthDate!),
         'deathDate': deathDate == null ? null : Timestamp.fromDate(deathDate!),
         'birthPlace': birthPlace,
+        'occupation': occupation,
         'bio': bio,
         'fatherId': fatherId,
         'motherId': motherId,

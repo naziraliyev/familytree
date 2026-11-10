@@ -8,7 +8,7 @@ import '../services/tree_service.dart';
 import '../widgets/dialogs.dart';
 import '../widgets/family_tree_view.dart';
 import '../widgets/person_card.dart';
-import 'person_detail_screen.dart';
+import '../widgets/person_sheet.dart';
 import 'person_form_screen.dart';
 
 /// Bitta oila daraxti: vizual ko'rinish va ro'yxat.
@@ -27,14 +27,9 @@ class _TreeScreenState extends State<TreeScreen> {
       TreeService.instance.watchPersons(widget.tree.id);
   String _query = '';
 
+  /// Shaxs ustiga bosilganda ma'lumot oynasi ochiladi (shu yerda tahrirlanadi).
   void _openPerson(Person p) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) =>
-            PersonDetailScreen(treeId: widget.tree.id, personId: p.id),
-      ),
-    );
+    showPersonSheet(context, treeId: widget.tree.id, personId: p.id);
   }
 
   void _addPerson(List<Person> persons) {

@@ -35,9 +35,13 @@ class AuthService {
         case 'user-disabled':
           return 'Bu hisob bloklangan.';
         case 'user-not-found':
+          return 'Bu email bilan hisob topilmadi. Avval ro\'yxatdan o\'ting.';
         case 'wrong-password':
         case 'invalid-credential':
-          return 'Email yoki parol noto\'g\'ri.';
+        case 'invalid-login-credentials':
+          return 'Email yoki parol noto\'g\'ri. Parol katta-kichik harfga '
+              'sezgir. Eslay olmasangiz, "Parolni unutdingizmi?" tugmasini '
+              'bosing. (${e.code})';
         case 'email-already-in-use':
           return 'Bu email allaqachon ro\'yxatdan o\'tgan.';
         case 'weak-password':
@@ -49,7 +53,7 @@ class AuthService {
         case 'operation-not-allowed':
           return 'Firebase konsolida Email/Password kirish yoqilmagan.';
       }
-      return e.message ?? e.code;
+      return '${e.message ?? 'Xatolik'} (${e.code})';
     }
     if (e is FirebaseException) {
       if (e.code == 'permission-denied') return 'Ruxsat yo\'q.';

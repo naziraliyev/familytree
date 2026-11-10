@@ -10,10 +10,12 @@ import '../utils/relations.dart';
 ///   trees/{treeId}                 — name, description, ownerId, members[]
 ///   trees/{treeId}/persons/{id}    — Person maydonlari
 class TreeService {
-  TreeService._();
-  static final TreeService instance = TreeService._();
+  TreeService(this._db);
 
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  /// Ilovadagi yagona nusxa. Testlarda soxta baza bilan almashtiriladi.
+  static TreeService instance = TreeService(FirebaseFirestore.instance);
+
+  final FirebaseFirestore _db;
 
   CollectionReference<Map<String, dynamic>> get _trees =>
       _db.collection('trees');

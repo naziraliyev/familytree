@@ -113,6 +113,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       key: const ValueKey('email'),
                       controller: _email,
                       keyboardType: TextInputType.emailAddress,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      textCapitalization: TextCapitalization.none,
                       autofillHints: const [AutofillHints.email],
                       decoration: const InputDecoration(
                         labelText: 'Email',
@@ -127,6 +130,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       key: const ValueKey('password'),
                       controller: _password,
                       obscureText: _obscure,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      autofillHints: const [AutofillHints.password],
                       decoration: InputDecoration(
                         labelText: 'Parol',
                         prefixIcon: const Icon(Icons.lock),
